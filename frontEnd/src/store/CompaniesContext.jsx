@@ -1,5 +1,5 @@
 // CompaniesContext.js
-import { createContext, useContext, useState } from 'react';
+import { createContext, useState } from "react";
 
 const CompaniesContext = createContext({
   companies: [],
@@ -9,12 +9,8 @@ const CompaniesContext = createContext({
 export const CompaniesContextProvider = ({ children }) => {
   const [companies, setCompanies] = useState([]);
 
-  const handleSetCompanies = (data) => {
-    setCompanies(data);
-  };
-
   return (
-    <CompaniesContext.Provider value={{ companies, setCompanies: handleSetCompanies }}>
+    <CompaniesContext.Provider value={{ companies, setCompanies }}>
       {children}
     </CompaniesContext.Provider>
   );

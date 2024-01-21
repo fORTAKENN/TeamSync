@@ -1,17 +1,17 @@
-import { useEffect, useState, useContext } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
-import CompaniesContext from '../../store/CompaniesContext/CompaniesContext';
-import DepartmentsContext from '../../store/CompaniesContext/DepartmentsContext';
-import InfoModal from '../../components/modals/InfoModal/InfoModal';
-import classes from './CompanyDetailPage.module.css';
+import { useEffect, useState, useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+import CompaniesContext from "../../store/CompaniesContext";
+import DepartmentsContext from "../../store/DepartmentsContext";
+import InfoModal from "../../components/modals/InfoModal/InfoModal";
+import classes from "./CompanyDetailPage.module.css";
 
 const CompanyDetailPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [company, setCompany] = useState(null);
   const [companyDepartments, setCompanyDepartments] = useState([]);
   const { companies } = useContext(CompaniesContext);
-  const {setDepartments} = useContext(DepartmentsContext);
+  const { setDepartments } = useContext(DepartmentsContext);
   const navigate = useNavigate();
   const params = useParams();
 
@@ -32,50 +32,58 @@ const CompanyDetailPage = () => {
   }, [company]);
 
   const handleAddDepartmentClick = () => {
-    navigate('/adddepartmentpage', { state: { company: company } });
+    navigate("/adddepartmentpage", { state: { company: company } });
   };
 
   const handleDepartmentClick = (departmentId) => {
-    navigate(`/${params.companyId}/${departmentId}`, { state: { company: company } } );
+    navigate(`/${params.companyId}/${departmentId}`, {
+      state: { company: company },
+    });
   };
 
   const fetchCompanyDetails = async () => {
     try {
-      const response = await axios.get(`https://localhost:7204/department/get-all-departments-by-companyid/${params.companyId}`);
+      const response = await axios.get(
+        `https://localhost:7204/department/get-all-departments-by-companyid/${params.companyId}`
+      );
       const fetchedDepartments = response.data.$values || [];
       setCompanyDepartments(fetchedDepartments);
       setDepartments(fetchedDepartments);
     } catch (error) {
-      console.error('Error fetching company details:', error);
+      console.error("Error fetching company details:", error);
       setShowModal(true);
     }
   };
-console.log(companyDepartments);
+  console.log(companyDepartments);
   return (
     <>
       {company ? (
         <div className={classes.container}>
-          <div className={classes['title__box']}>
-            <h1 className={classes['title']}>Company name: {company.name}</h1>
+          <div className={classes["title__box"]}>
+            <h1 className={classes["title"]}>Company name: {company.name}</h1>
           </div>
-          <div className={classes['description__box']}>
-            <div className={classes['description__box']}>
+          <div className={classes["description__box"]}>
+            <div className={classes["description__box"]}>
               <button
-                className={classes['add_department_button']}
+                className={classes["add_department_button"]}
                 onClick={handleAddDepartmentClick}
               >
                 Add department
               </button>
             </div>
           </div>
-          <div className={classes['departments__box']}>
+          <div className={classes["departments__box"]}>
             <h2>Departments:</h2>
             <ul>
-              {Array.isArray(companyDepartments) && companyDepartments.map((department) => (
-                <li key={department.id} onClick={() => handleDepartmentClick(department.id)}>
-                  {department.name}
-                </li>
-              ))}
+              {Array.isArray(companyDepartments) &&
+                companyDepartments.map((department) => (
+                  <li
+                    key={department.id}
+                    onClick={() => handleDepartmentClick(department.id)}
+                  >
+                    {department.name}
+                  </li>
+                ))}
             </ul>
           </div>
         </div>
@@ -84,9 +92,9 @@ console.log(companyDepartments);
           showModal={showModal}
           onClose={() => {
             setShowModal(false);
-            navigate('/');
+            navigate("/");
           }}
-          description={'Company not found'}
+          description={"Company not found"}
         />
       )}
     </>

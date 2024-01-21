@@ -1,12 +1,12 @@
-import { useContext, useState } from 'react';
-import axios from 'axios';
-import classes from './RegisterCompanyPage.module.css';
-import CompaniesContext from '../../store/CompaniesContext/CompaniesContext';
-import { useNavigate } from 'react-router-dom';
-import InfoModal from '../../components/modals/InfoModal/InfoModal';
+import { useContext, useState } from "react";
+import axios from "axios";
+import classes from "./RegisterCompanyPage.module.css";
+import CompaniesContext from "../../store/CompaniesContext";
+import { useNavigate } from "react-router-dom";
+import InfoModal from "../../components/modals/InfoModal/InfoModal";
 
 const RegisterCompanyPage = () => {
-  const [companyName, setCompanyName] = useState('');
+  const [companyName, setCompanyName] = useState("");
   const [showModal, setShowModal] = useState(false);
   const { setCompanies } = useContext(CompaniesContext);
   const navigate = useNavigate();
@@ -26,10 +26,13 @@ const RegisterCompanyPage = () => {
     };
 
     try {
-      const response = await axios.post("https://localhost:7204/company/create-company", newCompany);
+      const response = await axios.post(
+        "https://localhost:7204/company/create-company",
+        newCompany
+      );
       const createdCompany = response.data;
       setCompanies((prevCompanies) => [...prevCompanies, createdCompany]);
-      navigate('/');
+      navigate("/");
     } catch (err) {
       console.error(err);
     }
@@ -46,16 +49,16 @@ const RegisterCompanyPage = () => {
         onClose={() => {
           setShowModal(false);
         }}
-        description={'Please fill all the inputs'}
+        description={"Please fill all the inputs"}
       />
       <div className={classes.container}>
         <form className={classes.form} onSubmit={onSubmitHandler}>
           <div className={classes.title}>Register a company</div>
-          <div className={`${classes['company__name']}`}>
-            <label htmlFor='companyName'>Name:</label>
+          <div className={`${classes["company__name"]}`}>
+            <label htmlFor="companyName">Name:</label>
             <input
-              id='companyName'
-              type='text'
+              id="companyName"
+              type="text"
               value={companyName}
               onChange={onChangeHandler(setCompanyName)}
             />

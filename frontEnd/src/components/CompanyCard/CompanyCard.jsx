@@ -1,7 +1,7 @@
-import { useContext } from 'react';
-import classes from './CompanyCard.module.css';
-import CompaniesContext from '../../store/CompaniesContext/CompaniesContext';
-import { useNavigate } from 'react-router-dom';
+import { useContext } from "react";
+import classes from "./CompanyCard.module.css";
+import CompaniesContext from "../../store/CompaniesContext";
+import { useNavigate } from "react-router-dom";
 
 const CompanyCard = ({ id, name }) => {
   const { setCompanies } = useContext(CompaniesContext);

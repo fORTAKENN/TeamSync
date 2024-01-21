@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
-import classes from './EmployeeCard.module.css';
-import EmployeesContext from '../../store/CompaniesContext/EmployeeContext';
+import React, { useContext } from "react";
+import classes from "./EmployeeCard.module.css";
+import EmployeesContext from "../../store/EmployeeContext";
 
 const EmployeeCard = ({ employee }) => {
-  const {setEmployees } = useContext(EmployeesContext);
+  const { setEmployees } = useContext(EmployeesContext);
 
   const removeEmployeeHandler = () => {
     setEmployees((prevEmployees) =>
