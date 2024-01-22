@@ -27,7 +27,7 @@
 
 .nav__list-link:link,
 .nav__list-link:visited {
-  color: #3d9970;
+  color: transparent;
 }
 
 .nav__list-link:hover,

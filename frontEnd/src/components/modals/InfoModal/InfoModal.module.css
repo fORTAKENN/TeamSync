@@ -14,7 +14,7 @@
   top: 50%;
   padding: 10rem;
   background-color: #1e1e1e;
-  color: #3d9970;
+  color: transparent;
   transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;

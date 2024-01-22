@@ -3,7 +3,6 @@
   height: auto;
   margin: 0 auto;
   padding: 4rem;
-  
 }
 
 .title__box {
@@ -28,13 +27,13 @@
 .description {
   font-size: 3.6rem;
 }
-.add_department_button{
-  position: fixed; 
-  bottom: 10rem; 
-  right: 10rem; 
+.add_department_button {
+  position: fixed;
+  bottom: 10rem;
+  right: 10rem;
   color: #1e1e1e;
-  background-color: #3d9970;
-  border-color: #3d9970;
+  background-color: transparent;
+  border-color: transparent;
   width: 10%;
   height: 5rem;
 }
@@ -59,7 +58,7 @@
   grid-template-columns: 100px 100px 100px;
   row-gap: 2rem;
   column-gap: 10rem;
-  margin-right: 5rem ;
+  margin-right: 5rem;
 }
 
 .departments__box li {

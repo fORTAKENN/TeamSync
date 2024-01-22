@@ -6,7 +6,7 @@
   border-radius: 2rem;
   padding: 4rem;
   font-size: 1.8rem;
-  color: #3d9970;
+  color: transparent;
 }
 
 .form {
@@ -39,7 +39,7 @@
 }
 
 .button {
-  background-color: #3d9970;
+  background-color: transparent;
   color: #ffffff;
   padding: 10px 15px;
   border: none;
@@ -51,15 +51,4 @@
 
 .button:hover {
   background-color: #5ebd78;
-}
-
-input,
-textarea {
-  background-color: #3d9970;
-  color: #ffffff;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
 }
