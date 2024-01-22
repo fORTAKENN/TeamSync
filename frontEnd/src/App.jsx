@@ -9,17 +9,16 @@ import AddDepartmentPage from "./pages/AddDepartmentPage/AddDepartmentPage";
 import DepartmentDetailPage from "./pages/DepartmentDetailPage/DepartmentDetailPage";
 import AddEmployeePage from "./pages/AddEmployeePage/AddEmployeePage";
 import AuthContext from "./store/AuthContext";
+import LoginPage from "./pages/LoginPage/LoginPage";
 
 function App() {
   const authentication = useContext(AuthContext);
   if (authentication.user === null) {
     return (
-      <Layout>
-        <Routes>
-          <Route path="/login" element={<div>"Login page"</div>} />
-          <Route path="*" element={<Navigate to="/login" />} />
-        </Routes>
-      </Layout>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="*" element={<Navigate to="/login" />} />
+      </Routes>
     );
   }
   return (
