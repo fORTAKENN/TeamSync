@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.EntityFrameworkCore;
+using ServerLibrary.Repositories.Implementations;
 using System.Text.Json.Serialization;
 using TeamSync.Controllers;
 using TeamSync.Data;
+using TeamSync.Helpers;
+using TeamSync.Repositories.Contracts;
 using TeamSync.Service;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -47,7 +50,8 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader();
     });
 });
-
+builder.Services.Configure<JwtSection>(builder.Configuration.GetSection("JwtSection"));
+builder.Services.AddScoped<IUserAccount, UserAccountRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -14,6 +14,10 @@ namespace TeamSync.Data
         public DbSet<Company>? Companies { get; set;}
         public DbSet<Department>? Departments { get; set;}
         public DbSet<ApplicationUser>? ApplicationUsers { get; set; }
+        public DbSet<SystemRole>? SystemRoles { get; set; }
+        public DbSet<UserRole>? UserRoles { get; set; } 
+        public DbSet<RefreshTokenInfo> RefreshTokenInfos { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

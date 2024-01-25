@@ -3,7 +3,7 @@
 
 namespace TeamSync.DTOs
 {
-    internal class Register: AccountBase
+    public class Register: AccountBase
     { 
         [Required]
         [MinLength(5)]
